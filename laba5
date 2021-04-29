@@ -74,7 +74,7 @@ void add_after(struct List *head)
         int cur = head[0].next;
         while (cur != 0 && cur != -1 && head[cur].inf != num)
             cur = head[cur].next;
-        int nex = 0;
+        int nex = 1;
         while (head[nex].next != -1)
             nex = head[nex].next;
         head[nex].next = head[cur].next;
