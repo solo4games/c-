@@ -13,10 +13,70 @@ void init(struct List *head)
 {
     head[0].next = 0;
     for (int i = 1; i < N; i++)
-    {
         head[i].next = -1;
+}
+
+int check(struct List *head)
+{
+    int cur = head[0].next;
+    if (cur == 0)
+        return (-1);
+    int counter = 0;
+    while (cur != 0 && cur != -1)
+    {
+        counter++;
+        cur = head[cur].next;
+    }
+    return (counter);
+}
+
+void look(struct List *head)
+{
+    if (check(head) == -1)
+        std::cout << "List is empty" << std::endl;
+    else
+    {
+        int cur = head[0].next;
+        while (cur != 0 && cur != -1)
+        {
+            std::cout << "Inf is " << head[cur].inf << std::endl;
+            cur = head[cur].next;
+        }
     }
 }
+
+int search(struct List *head, int elem)
+{
+    if (check(head) == -1)
+        std::cout << "List is empty" << std::endl;
+    else
+    {
+        int cur = head[0].next;
+        while (cur != 0 && cur != -1)
+        {
+            if (head[cur].inf == elem)
+                return (cur);
+            cur = head[cur].next;
+        }
+        if (cur == 0)
+            std::cout << "Cant find an element" << std::endl;
+    }
+}
+
+void add_after(struct List *head)
+{
+    if (check(head) == N)
+        std::cout << "List is full" << std::endl;
+    else
+    {
+        std::cout << "Enter the number after which you want to add a new item" << std::endl;
+        int num = check_num();
+        int cur = search(head, num);
+        int nex = 0;
+        while (head[nex].next != -1)
+            nex = head[nex].next;
+        
+    }
 
 int main()
 {
