@@ -58,7 +58,7 @@ int search(struct List *head, int elem)
                 return (cur);
             cur = head[cur].next;
         }
-        if (cur == 0)
+        if (cur == 0 || cur == -1)
             std::cout << "Cant find an element" << std::endl;
     }
 }
@@ -69,18 +69,16 @@ void add_after(struct List *head)
         std::cout << "List is full" << std::endl;
     else
     {
-    
-        if (head[0].next != 0)
-        {
-            std::cout << "Enter the number after which you want to add a new item" << std::endl;
-            int num = check_num();
-            int cur = search(head, num);
-            int nex = 0;
-            while (head[nex].next != -1)
-                nex = head[nex].next;
-            head[nex].next = head[cur].next;
-            head[cur].next = nex;
-         }
+        std::cout << "Enter the number after which you want to add a new item" << std::endl;
+        int num = check_num();
+        int cur = head[0].next;
+        while (cur != 0 && cur != -1 && head[cur].inf != num)
+            cur = head[cur].next;
+        int nex = 0;
+        while (head[nex].next != -1)
+            nex = head[nex].next;
+        head[nex].next = head[cur].next;
+        head[cur].next = nex;
         std::cout << "Enter the new item" << std::endl;
         head[nex].inf = check_num();
     }
