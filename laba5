@@ -15,7 +15,6 @@ void init(struct List *head)
     for (int i = 1; i < N; i++)
     {
         head[i].next = -1;
-        i++;
     }
 }
 
